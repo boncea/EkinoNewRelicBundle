@@ -76,7 +76,8 @@ class RequestListener implements EventSubscriberInterface
 
         // Set application name if different from ini configuration
         if ($appName !== \ini_get('newrelic.appname')) {
-            $this->interactor->setApplicationName($appName, $this->config->getLicenseKey(), $this->config->getXmit());
+            $this->interactor->endTransaction(!$this->config->getXmit());
+            $this->interactor->setApplicationName($appName, $this->config->getLicenseKey());
         }
     }
 

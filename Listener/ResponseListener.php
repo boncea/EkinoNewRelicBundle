@@ -104,8 +104,6 @@ class ResponseListener implements EventSubscriberInterface
             }
         }
 
-        if ($this->symfonyCache) {
-            $this->interactor->endTransaction();
-        }
+        $this->interactor->endTransaction();
     }
 }
